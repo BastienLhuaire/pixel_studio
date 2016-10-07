@@ -4,8 +4,12 @@
  * color : tableau des couleur [r,g,b]
  */
 class Color{
-	constructor(name,couleur){
+	constructor(name,color){
 		this.name=name;
 		this.color=color;
+	}
+
+	to_string(){
+		return "rgb("+this.color.join(",")+")";
 	}
 }

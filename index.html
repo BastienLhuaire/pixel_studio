@@ -3,18 +3,37 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Pixel Studio</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <h1>Pixel Studio</h1>
+    <div>CANVAS</div>
+    <aside>
+        <table border="1" border="20%" cellspacing="5px" cellpadding="5px" bgcolor="#ddd">
+            <thead class="tools">
+                <tr>
+                    <th><img src="images/pencil.png"></th>
+                </tr>
+            </thead>
+
+            <tbody class="colors">
+                <tr>
+                    <td><div class="black"></div></td>
+                </tr>
+             </tbody>
+        </table>
+    </aside>
 
 
-
-
-
-    <script type="text/javascript" src="js/pixel_studio.js"></script>
-    <script type="text/javascript" src="js/tool.class.js"></script>
-    <script type="text/javascript" src="js/color.class.js"></script>
-    <script type="text/javascript" src="js/palette.js"></script>
+    <script src="app/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="app/pixel_studio.js"></script>
+    <script type="text/javascript" src="app/tool.class.js"></script>
+    <script type="text/javascript" src="app/color.class.js"></script>
+    <script type="text/javascript" src="app/palette.js"></script>
+    <script>
+        $(function(){
+            pixel_studio.init();
+        });
+    </script>
 </body>
 </html>
