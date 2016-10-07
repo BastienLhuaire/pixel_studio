@@ -1,6 +1,8 @@
 var pixel_studio ={
 	init: function() {
-		let array_colors=[
+		let array_colors=
+		[
+			new Color("black",[0,0,0]),
 			new Color("blue",[46,69,204]),
 			new Color("red",[158,12,12]),
 			new Color("green",[33,171,0]),

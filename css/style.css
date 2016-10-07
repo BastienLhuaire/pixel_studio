@@ -9,37 +9,13 @@ body{
 	height: 45px;
 }
 
-.tools th:hover,.colors td:hover{
-	background-color:rgb(46,69,204);
+.colors td:hover{
+	border: 2px inset black;
 }
-
-.blue{
-	background-color: rgb(46,69,204);
+.tools th:hover{
+	background-color: blue;
 }
-.purple{
-	background-color: rgb(117,25,145);
-}
-.red{
-	background-color: rgb(158,12,12);
-}
-.yellow{
-	background-color: rgb(255,237,15);
-}
-.black{
-	background-color: rgb(0,0,0);
-}
-.orange{
-	background-color: rgb(218,78,4);
-}
-.green{
-	background-color: rgb(33,171,0);
-}
-.grey{
-	background-color: rgb(117,99,96);
-}
-.pink{
-	background-color: rgb(242,16,146);
-}
-.white{
-	background-color: rgb(255,255,255);
+.color_choose{
+	border: 2px inset black;
+	background-color: grey;
 }
