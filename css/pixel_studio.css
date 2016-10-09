@@ -48,6 +48,7 @@ body{
 #tools li{
 	background-image: url(../images/eraser.png);
 	background-color: white;
+	background-size: cover;
 }
 
 #colors li{
