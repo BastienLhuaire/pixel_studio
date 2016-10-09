@@ -1,11 +1,14 @@
-/**
- * Class Outils
- * name : le nom en string
- * color : le chemin du fichier de l'icone
- */
+
 class Tool{
-	constructor(name,icon){
-		this.name=name;
-		this.icone=icon;
+
+	/**
+	 * Représente un outil dans la palette
+	 * @param  {string} name      Nom de l'outil
+	 * @param  {string} icon_file chemin relatif de l'image icone
+	 */
+	constructor(name, icon_file){
+
+		this.name 		= name;
+		this.icon_file 	= icon_file;
 	}
 }

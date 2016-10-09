@@ -1,17 +1,20 @@
-var pixel_studio ={
-	init: function() {
-		let array_colors=
-		[
-			new Color("black",[0,0,0]),
-			new Color("blue",[46,69,204]),
-			new Color("red",[158,12,12]),
-			new Color("green",[33,171,0]),
-			new Color("yellow",[255,237,15]),
-			new Color("purple",[117,25,145]),
-			new Color("orange",[218,78,4])
-		]
-		this.palette.init_colors(array_colors);
-		console.log("Pixel Studio");
+
+var pixel_studio = {
+
+	init: function(){
+
+		// couleurs de la palette
+		
+		let colors = [
+			new Color('green', [56,187,136]),
+			new Color('purple', [135,35,111]),
+			new Color('sand', [220,194,140]),
+			new Color('myst', [80,62,116]),
+			new Color('lilas', [151,146,197])
+		];
+		this.palette_color.init( colors );
+
+		console.log("Pixel studio is initiated and  ready");
 	}
 };
 

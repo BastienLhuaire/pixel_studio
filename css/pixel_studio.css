@@ -1,0 +1,59 @@
+
+body{
+	margin: 0;
+}
+
+/* --------------------- P A L E T T E ---------------------- */
+
+#palette {
+	position: fixed;
+	left: 10px;
+	top: 10px;
+	width: 35px;
+	padding: 10px;
+
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	background-color: #bbb;
+}
+
+#tools, #colors  {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#tools{
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	border-bottom: 2px  dashed #999;
+}
+
+#tools li, #colors li {
+	display: inline-block;
+	width: 26px;
+	height: 26px;
+	padding: 4px;
+	border: 1px solid #666;
+	cursor: pointer;
+}
+
+.selected {
+	width: 22px !important;
+	height: 22px !important;
+	border: 3px solid #fff !important;
+}
+
+#tools li{
+	background-image: url(../images/eraser.png);
+	background-color: white;
+}
+
+#colors li{
+	background-color: red;
+}
+
+#tools li:hover, #colors  li:hover{
+	border: 1px solid #fff;
+}
