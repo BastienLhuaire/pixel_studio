@@ -11,6 +11,10 @@ pixel_studio.palette_tool = {
 						.addClass('selected_tool');
 	},
 
+	get_selected: function(){
+		return this.tool_selected;
+	},
+
 	init: function( tools ){
 		this.tools = tools;
 

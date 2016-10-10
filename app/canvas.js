@@ -33,11 +33,16 @@ pixel_studio.canvas = {
 		this.screen.height = this.pixel_dimension*this.nb_pixel.height;
 		this.nb_pixel.width = nb_pixel_width;
 		
-		$("#"+div_id).append($("<canvas width='"+width+"' height='"+height+"'></canvas>"));
+		$("#"+div_id).append($("<canvas width='"+this.screen.width+"' height='"+this.screen.height+"'></canvas>"));
 	
 		let $c = $("#"+div_id).children()[0];	
 		let ctx = $c.getContext("2d");
 		this.context=ctx;
+
+		//gestion des click
+		$("#canvas canvas").on('click',function(e){
+			pixel_studio.canvas.on_click(e);
+		});
 	},
 
 	/**
@@ -49,8 +54,27 @@ pixel_studio.canvas = {
 	draw: function(x,y,color){
 		let x_finale=(x-1)*this.pixel_dimension;
 		let y_finale=(y-1)*this.pixel_dimension;
-		//pixel_studio.palette_color.color_selected.to_string()
 		this.context.fillStyle=color.to_string();
 		this.context.fillRect(x_finale,y_finale,this.pixel_dimension,this.pixel_dimension);
+	},
+
+	screen_to_canvas: function(mouse_event){
+		let offset = $("#canvas canvas").offset();
+		return{
+			x: Math.floor((mouse_event.clientX - offset.left) /this.pixel_dimension)+1,
+			y: Math.floor((mouse_event.clientY - offset.top) /this.pixel_dimension)+1
+		}
+	},
+
+	on_click: function(mouse_event){
+
+		let ps = pixel_studio,
+			position = ps.canvas.screen_to_canvas(mouse_event),
+			tool = ps.palette_tool.get_selected(),
+			color = ps.palette_color.get_selected();
+
+		let c = (tool.name == "pencil") ? color : ps.palette_color.bg_color;
+
+		ps.canvas.draw(position.x,position.y, c);
 	}
 }

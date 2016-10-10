@@ -27,7 +27,7 @@ var pixel_studio = {
 		this.palette_tool.init( tools );
 
 		//init canvas
-		this.canvas.init("canvas",1150,520,100);
+		this.canvas.init("canvas",1150,520,70);
 		this.canvas.draw(0,0,colors[1])
 
 		console.log("Pixel studio is initiated and  ready");

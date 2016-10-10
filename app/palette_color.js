@@ -12,9 +12,15 @@ pixel_studio.palette_color = {
 						.addClass('selected_color');
 	},
 
+	get_selected: function(){
+		return this.color_selected;
+	},
+
 	init: function( colors ){
 
 		this.colors = colors;
+
+		this.bg_color = new Color('white', [255,255,255]);
 
 		//  création de la représentation de la palette
 		
