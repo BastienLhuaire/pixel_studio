@@ -7,9 +7,9 @@ pixel_studio.palette_color = {
 	select_color:  function( color ){
 
 		this.color_selected = color;
-		$('#colors li').removeClass('selected')
+		$('#colors li').removeClass('selected_color')
 						.eq(color.id)
-						.addClass('selected');
+						.addClass('selected_color');
 	},
 
 	init: function( colors ){
@@ -40,7 +40,7 @@ pixel_studio.palette_color = {
 		// gestion des click
 		
 		var self = this;
-
+		
 		$('#colors').on('click', 'li', function(){
 
 			let index = $( "#colors li" ).index( this );

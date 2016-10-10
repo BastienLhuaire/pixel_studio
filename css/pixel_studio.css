@@ -1,6 +1,7 @@
 
 body{
 	margin: 0;
+	background-color: #ddd;
 }
 
 /* --------------------- P A L E T T E ---------------------- */
@@ -39,10 +40,16 @@ body{
 	cursor: pointer;
 }
 
-.selected {
+.selected_color{
 	width: 22px !important;
 	height: 22px !important;
 	border: 3px solid #fff !important;
+}
+
+.selected_tool{
+	width: 22px !important;
+	height: 22px !important;
+	border: 3px solid #000 !important;
 }
 
 #tools li{
@@ -57,4 +64,21 @@ body{
 
 #tools li:hover, #colors  li:hover{
 	border: 1px solid #fff;
+}
+
+/*canvas*/
+
+#canvas{
+	float: right;
+}
+
+canvas{
+	background-color: #fff;
+	border:1px solid #000000;
+	border-radius: 5px;
+	margin-top: 10px;
+	margin-right: 10px;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); 
 }
