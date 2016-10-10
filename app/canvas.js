@@ -10,7 +10,10 @@ pixel_studio.canvas = {
 
 	pixel_dimension: 0,
 
-	nb_pixel_width: 0,
+	nb_pixel: {
+		width:0,
+		height:0
+	},
 
 	context: null,
 
@@ -24,16 +27,30 @@ pixel_studio.canvas = {
 	 */
 	init : function(div_id,width,height,nb_pixel_width){
 		this.pixel_dimension = Math.floor(width/nb_pixel_width);
+		this.nb_pixel.height = Math.floor(height/this.pixel_dimension)
 		this.div_id = div_id;
 		this.screen.width = this.pixel_dimension*nb_pixel_width;
-		this.screen.height = this.pixel_dimension*Math.floor(height/nb_pixel_width);
-		this.nb_pixel_width = nb_pixel_width;
-
-		let context_canvas="<canvas id='canvas_pixel_studio' width='"+width+"' height='"+height+"'></canvas>";
-		$("#"+div_id).append(context_canvas);
+		this.screen.height = this.pixel_dimension*this.nb_pixel.height;
+		this.nb_pixel.width = nb_pixel_width;
+		
+		$("#"+div_id).append($("<canvas width='"+width+"' height='"+height+"'></canvas>"));
 	
-		let c = document.getElementById('canvas_pixel_studio');
-		this.context=c;
-		let ctx = c.getContext("2d")
+		let $c = $("#"+div_id).children()[0];	
+		let ctx = $c.getContext("2d");
+		this.context=ctx;
+	},
+
+	/**
+	 * Dessine un pixel sur la zone de dessin
+	 * @param  {number} x     coordonée horizontal pixel
+	 * @param  {number} y     coordonée vertical pixel
+	 * @param  {Color} color couleur du pixel : instance de Color
+	 */
+	draw: function(x,y,color){
+		let x_finale=(x-1)*this.pixel_dimension;
+		let y_finale=(y-1)*this.pixel_dimension;
+		//pixel_studio.palette_color.color_selected.to_string()
+		this.context.fillStyle=color.to_string();
+		this.context.fillRect(x_finale,y_finale,this.pixel_dimension,this.pixel_dimension);
 	}
 }
