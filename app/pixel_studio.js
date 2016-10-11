@@ -28,7 +28,8 @@ var pixel_studio = {
 
 		//init canvas
 		this.canvas.init("canvas",1150,520,70);
-		this.canvas.draw(0,0,colors[1])
+
+		this.data.init("canvas",1150,520,70);
 
 		console.log("Pixel studio is initiated and  ready");
 	}

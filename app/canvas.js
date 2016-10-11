@@ -9,6 +9,7 @@ pixel_studio.canvas = {
 	},
 
 	pixel_dimension: 0,
+	bg_color : new Color('white', [255,255,255]),
 
 	nb_pixel: {
 		width:0,
@@ -43,6 +44,7 @@ pixel_studio.canvas = {
 
 		//gestion des click
 		$("#canvas canvas").on('mousedown mousemove mouseup',function(e){	pixel_studio.canvas.on_mouse_event(e); });
+		console.log("canvas : ready")
 	},
 
 	on_mouse_event: function(mouse_event){
@@ -64,6 +66,7 @@ pixel_studio.canvas = {
 		let y_finale=(y-1)*this.pixel_dimension;
 		this.context.fillStyle=color.to_string();
 		this.context.fillRect(x_finale,y_finale,this.pixel_dimension,this.pixel_dimension);
+		pixel_studio.data.set_pixel(x_finale,y_finale,color);
 	},
 
 	screen_to_canvas: function(mouse_event){
@@ -72,5 +75,9 @@ pixel_studio.canvas = {
 			x: Math.floor((mouse_event.clientX - offset.left) /this.pixel_dimension)+1,
 			y: Math.floor((mouse_event.clientY - offset.top) /this.pixel_dimension)+1
 		}
+	},
+
+	get_background_color: function(){
+		return this.bg_color;
 	}
 }

@@ -20,8 +20,6 @@ pixel_studio.palette_color = {
 
 		this.colors = colors;
 
-		this.bg_color = new Color('white', [255,255,255]);
-
 		//  création de la représentation de la palette
 		
 		let $colors = $('#colors'),
