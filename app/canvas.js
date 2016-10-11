@@ -15,6 +15,8 @@ pixel_studio.canvas = {
 		height:0
 	},
 
+	canDraw : false,
+
 	context: null,
 
 	/**
@@ -27,7 +29,7 @@ pixel_studio.canvas = {
 	 */
 	init : function(div_id,width,height,nb_pixel_width){
 		this.pixel_dimension = Math.floor(width/nb_pixel_width);
-		this.nb_pixel.height = Math.floor(height/this.pixel_dimension)
+		this.nb_pixel.height = Math.floor(height/this.pixel_dimension);
 		this.div_id = div_id;
 		this.screen.width = this.pixel_dimension*nb_pixel_width;
 		this.screen.height = this.pixel_dimension*this.nb_pixel.height;
@@ -40,9 +42,9 @@ pixel_studio.canvas = {
 		this.context=ctx;
 
 		//gestion des click
-		$("#canvas canvas").on('click',function(e){
-			pixel_studio.canvas.on_click(e);
-		});
+		$("#canvas canvas").on('mousedown',function(e){	pixel_studio.canvas.mouse_down(e); });
+		$("#canvas canvas").on('mousemove',function(e){	pixel_studio.canvas.mouse_move(e); });
+		$("#canvas canvas").on('mouseup',function(e){ pixel_studio.canvas.mouse_up(e); });
 	},
 
 	/**
@@ -66,15 +68,24 @@ pixel_studio.canvas = {
 		}
 	},
 
-	on_click: function(mouse_event){
+	mouse_down: function(mouse_event){
+		let tool = pixel_studio.palette_tool.get_selected();
+		if (tool.mouse_down) {
+			tool.mouse_down(mouse_event);
+		}
+	},
 
-		let ps = pixel_studio,
-			position = ps.canvas.screen_to_canvas(mouse_event),
-			tool = ps.palette_tool.get_selected(),
-			color = ps.palette_color.get_selected();
+	mouse_move: function(mouse_event){
+		let tool = pixel_studio.palette_tool.get_selected();
+		if (tool.mouse_move) {
+			tool.mouse_move(mouse_event);
+		};
+	},
 
-		let c = (tool.name == "pencil") ? color : ps.palette_color.bg_color;
-
-		ps.canvas.draw(position.x,position.y, c);
+	mouse_up: function(mouse_event){
+		let tool = pixel_studio.palette_tool.get_selected();
+		if (tool.mouse_up) {
+			tool.mouse_up(mouse_event);
+		};
 	}
 }
