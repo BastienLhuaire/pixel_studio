@@ -42,9 +42,15 @@ pixel_studio.canvas = {
 		this.context=ctx;
 
 		//gestion des click
-		$("#canvas canvas").on('mousedown',function(e){	pixel_studio.canvas.mouse_down(e); });
-		$("#canvas canvas").on('mousemove',function(e){	pixel_studio.canvas.mouse_move(e); });
-		$("#canvas canvas").on('mouseup',function(e){ pixel_studio.canvas.mouse_up(e); });
+		$("#canvas canvas").on('mousedown mousemove mouseup',function(e){	pixel_studio.canvas.on_mouse_event(e); });
+	},
+
+	on_mouse_event: function(mouse_event){
+		let tool = pixel_studio.palette_tool.get_selected(),
+			type = 'on_'+mouse_event.type;
+		if (tool[type]) {
+			tool[type](mouse_event);
+		}
 	},
 
 	/**
@@ -66,26 +72,5 @@ pixel_studio.canvas = {
 			x: Math.floor((mouse_event.clientX - offset.left) /this.pixel_dimension)+1,
 			y: Math.floor((mouse_event.clientY - offset.top) /this.pixel_dimension)+1
 		}
-	},
-
-	mouse_down: function(mouse_event){
-		let tool = pixel_studio.palette_tool.get_selected();
-		if (tool.mouse_down) {
-			tool.mouse_down(mouse_event);
-		}
-	},
-
-	mouse_move: function(mouse_event){
-		let tool = pixel_studio.palette_tool.get_selected();
-		if (tool.mouse_move) {
-			tool.mouse_move(mouse_event);
-		};
-	},
-
-	mouse_up: function(mouse_event){
-		let tool = pixel_studio.palette_tool.get_selected();
-		if (tool.mouse_up) {
-			tool.mouse_up(mouse_event);
-		};
 	}
 }

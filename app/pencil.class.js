@@ -6,25 +6,25 @@ class Pencil extends Tool{
 		this.canvas = canvas;
 	}
 
-	mouse_down(mouse_event){
+	on_mousedown(mouse_event){
 		let	ps 		 = pixel_studio,
-			position = ps.canvas.screen_to_canvas(mouse_event),
+			position = this.canvas.screen_to_canvas(mouse_event),
 			color = ps.palette_color.get_selected();
 
-		ps.canvas.draw(position.x,position.y, color);
+		this.canvas.draw(position.x,position.y, color);
 		canvas.canDraw=true;
 	}
 
-	mouse_move(mouse_event){
+	on_mousemove(mouse_event){
 		if (canvas.canDraw==true) {
 			let	ps 		 = pixel_studio,
-			position = ps.canvas.screen_to_canvas(mouse_event),
+			position = this.canvas.screen_to_canvas(mouse_event),
 			color = ps.palette_color.get_selected();
-			ps.canvas.draw(position.x,position.y, color);
+			this.canvas.draw(position.x,position.y, color);
 		};
 	}
 
-	mouse_up(mouse_event){
+	on_mouseup(mouse_event){
 		canvas.canDraw=false;
 	}
 }
